@@ -1,0 +1,89 @@
+{
+    "id": "com.transchecker.translation",
+    "name": "TransChecker Translation",
+    "description": "Translate Mattermost messages with back-translation quality scoring (TransChecker-compatible).",
+    "homepage_url": "https://github.com/mattermost/mattermost-plugin-starter-template",
+    "support_url": "https://github.com/mattermost/mattermost-plugin-starter-template/issues",
+    "icon_path": "assets/starter-template-icon.svg",
+    "min_server_version": "9.0.0",
+    "server": {
+        "executables": {
+            "linux-amd64": "server/dist/plugin-linux-amd64",
+            "linux-arm64": "server/dist/plugin-linux-arm64",
+            "darwin-amd64": "server/dist/plugin-darwin-amd64",
+            "darwin-arm64": "server/dist/plugin-darwin-arm64",
+            "windows-amd64": "server/dist/plugin-windows-amd64.exe"
+        }
+    },
+    "webapp": {
+        "bundle_path": "webapp/dist/main.js"
+    },
+    "settings_schema": {
+        "header": "Configure the Translation API Service that powers message translation.",
+        "footer": "Use MyMemory (free, no signup) via the bundled translation-api service. See project README for setup.",
+        "settings": [
+            {
+                "key": "TranslationAPIURL",
+                "display_name": "Translation API URL",
+                "type": "text",
+                "help_text": "Base URL of the Translation API Service (e.g. http://host.docker.internal:5000)",
+                "placeholder": "http://host.docker.internal:5000",
+                "default": "http://host.docker.internal:5000"
+            },
+            {
+                "key": "TranslationAPIKey",
+                "display_name": "Translation API Key",
+                "type": "text",
+                "help_text": "API key sent as X-API-Key header to the Translation API Service.",
+                "placeholder": "dev-transchecker-key-change-in-production",
+                "default": "dev-transchecker-key-change-in-production"
+            },
+            {
+                "key": "DefaultTargetLanguage",
+                "display_name": "Default Target Language",
+                "type": "text",
+                "help_text": "Default receive language code for users who have not set a personal preference (for example: en, fr, ja).",
+                "placeholder": "en",
+                "default": "en"
+            },
+            {
+                "key": "CacheTTLHours",
+                "display_name": "Cache TTL (hours)",
+                "type": "number",
+                "help_text": "How long to keep cached translations in the plugin KV store.",
+                "placeholder": "168",
+                "default": 168
+            },
+            {
+                "key": "EnableAutoTranslate",
+                "display_name": "Auto-translate channel messages",
+                "type": "bool",
+                "help_text": "When enabled, new channel messages are automatically translated for each member in their preferred language (TransChecker mode).",
+                "default": true
+            },
+            {
+                "key": "EnablePreTranslatePreview",
+                "display_name": "Pre-send translation preview",
+                "type": "bool",
+                "help_text": "When enabled, users see how their message will appear to recipients before sending.",
+                "default": true
+            },
+            {
+                "key": "STTApiURL",
+                "display_name": "Speech-to-Text API URL (optional)",
+                "type": "text",
+                "help_text": "Speech-to-text for voice notes. Defaults to the Translation API URL (same service, /transcribe). First run downloads a small Whisper model (~75MB).",
+                "placeholder": "http://host.docker.internal:5000",
+                "default": ""
+            },
+            {
+                "key": "STTApiKey",
+                "display_name": "Speech-to-Text API Key (optional)",
+                "type": "text",
+                "help_text": "API key for the optional STT service.",
+                "placeholder": "",
+                "default": ""
+            }
+        ]
+    }
+}

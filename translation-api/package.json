@@ -1,0 +1,28 @@
+{
+  "name": "transchecker-translation-api",
+  "version": "1.0.0",
+  "description": "Translation API Service for Mattermost TransChecker integration",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "tsx src/chat_slang.test.ts"
+  },
+  "dependencies": {
+    "@xenova/transformers": "^2.17.2",
+    "audio-decode": "^3.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "multer": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/multer": "^2.1.0",
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
